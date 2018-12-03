@@ -4,8 +4,12 @@ Dockerfiles used at CTMR that are not coupled to a specific project.
 ## rstudio_luisa
 
 - Based on `bioconductor/release_base2`
-- DADA2 installed from github sources
 - Working directory is `/home/rstudio`
+- Installed packages:
+  - vegan
+  - RColorBrewer
+  - vioplot
+  - pheatmap
 
 Example command:
 
