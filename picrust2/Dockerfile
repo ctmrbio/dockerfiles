@@ -37,5 +37,8 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh; 
 	pip install --editable .; \
 	pytest; \
 	echo "source activate picrust2" >> /root/.bashrc
+COPY activate_picrust2_env.sh /picrust2
 
 WORKDIR /mnt
+
+ENTRYPOINT ["/picrust2/activate_picrust2_env.sh"]
