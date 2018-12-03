@@ -1,7 +1,7 @@
 # dockerfiles
 Dockerfiles used at CTMR that are not coupled to a specific project.
 
-## `rstudio_dada2`
+## rstudio_luisa
 
 - Based on `bioconductor/release_base2`
 - DADA2 installed from github sources
@@ -10,11 +10,27 @@ Dockerfiles used at CTMR that are not coupled to a specific project.
 Example command:
 
 ```
-docker run --rm -it -u $(id -u):$(id -g) -v $pwd:/home/rstudio ctmrbio/rstudio_dada2
+docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/home/rstudio ctmrbio/rstudio_dada2
 ```
 
-To run the DADA2 workflow, run `dada2.R RUN_NAME`. It will look for read files in
-the current working directory (i.e. the `$pwd` component in the `-v` argument to docker.
+Use this image with SSH port forwarding to access the RStudio interface running
+inside the container. The default hosting port inside the container is `8787`. 
+
+## rstudio_dada2
+
+- Based on `bioconductor/release_base2`
+- DADA2 installed from github sources
+- Working directory is `/home/rstudio`
+
+Example command:
+
+```
+docker run --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/home/rstudio ctmrbio/rstudio_dada2
+```
+
+Use this image with SSH port forwarding to access the RStudio interface running
+inside the container. The default hosting port inside the container is `8787`. 
+
 
 ## picrust2
 
