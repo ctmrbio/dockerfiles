@@ -1,7 +1,7 @@
 # dockerfiles
 Dockerfiles used at CTMR that are not coupled to a specific project.
 
-Typicall Docker run invocations look like this:
+Typical Docker run invocations look like this:
 
 ```
 docker run <options> ctmrbio/container_name
@@ -27,13 +27,17 @@ The following options are often used:
 ## rstudio_luisa
 
 - Based on `bioconductor/release_base2`
-- DADA2 installed from github sources
 - Working directory is `/home/rstudio`
+- Installed packages:
+  - vegan
+  - RColorBrewer
+  - vioplot
+  - pheatmap
 
 Example command:
 
 ```
-docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/home/rstudio ctmrbio/rstudio_dada2
+docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/home/rstudio ctmrbio/rstudio_luisa
 ```
 
 Use this image with SSH port forwarding to access the RStudio interface running
