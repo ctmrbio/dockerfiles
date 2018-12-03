@@ -14,7 +14,7 @@ Dockerfiles used at CTMR that are not coupled to a specific project.
 Example command:
 
 ```
-docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/home/rstudio ctmrbio/rstudio_dada2
+docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/home/rstudio ctmrbio/rstudio_luisa
 ```
 
 Use this image with SSH port forwarding to access the RStudio interface running
