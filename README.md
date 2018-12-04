@@ -17,9 +17,9 @@ The following options are often used:
   which will call `id` to automatically get your user and group ID. Note that
   the group ID might be incorrect if working in a shared folder. For work in our
   shared folders, set the group ID to `1314` (the group ID for `ctmrbioinfo`).
-- `-p`: Connect a port on the host (e.g. CTMR-NAS) to a port in the container.
-  Often used for connecting to web services inside a container, such as RStudio
-  or Pavian.
+- `-p <host_port>:<container_port>`: Connect a port on the host (e.g. CTMR-NAS) 
+  to a port in the container. Often used for connecting to web services inside 
+  a container, such as RStudio or Pavian.
 - `-v <host_path>:<container_path>`: Mount a path on the host machine into the
   container. The `<container_path>` doesn't have to exists beforehand. Can be 
   useful to connect e.g. an output directory as `-v /path/to/outdir:/outdir`.
