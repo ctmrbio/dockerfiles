@@ -58,7 +58,7 @@ inside the container. The default hosting port inside the container is `8787`.
   - `picrust2` conda environment
 
 ```
-docker run --rm -it -u $(id -u):$(id -g) -v $pwd:/picrust2 ctmrbio/picrust2
+docker run --rm -it -u $(id -u):$(id -g) -v $pwd:/mnt ctmrbio/picrust2
 ```
 
 NOTE: The image uses an ENTRYPOINT that is script located in `/picrust2/activate_picrust2_env.sh`
