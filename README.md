@@ -15,7 +15,8 @@ The following options are often used:
 - `-u <username>:<group>`: Set username and group to run as inside the container 
   (e.g. `-u boulund:ctmrbioinfo`).  Commands often show `-u $(id -u):$(id -g)`, 
   which will call `id` to automatically get your user and group ID. Note that
-  the group ID might be incorrect if working in a shared folder.
+  the group ID might be incorrect if working in a shared folder. For work in our
+  shared folders, set the group ID to `1314` (the group ID for `ctmrbioinfo`).
 - `-p`: Connect a port on the host (e.g. CTMR-NAS) to a port in the container.
   Often used for connecting to web services inside a container, such as RStudio
   or Pavian.
