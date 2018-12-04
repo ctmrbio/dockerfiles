@@ -51,8 +51,11 @@ inside the container. The default hosting port inside the container is `8787`.
 ## picrust2
 
 - Based on `ubuntu:18.04`
-- Builds and installs `epa-ng`, and `gappa`
 - Working directory is `/mnt`
+- Builds and installs:
+  - `epa-ng`
+  - `gappa`
+  - `picrust2` conda environment
 
 ```
 docker run --rm -it -u $(id -u):$(id -g) -v $pwd:/picrust2 ctmrbio/picrust2
