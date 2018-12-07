@@ -27,7 +27,7 @@ The following options are often used:
   container. The `<container_path>` doesn't have to exists beforehand. Can be 
   useful to connect e.g. an output directory as `-v /path/to/outdir:/outdir`.
 
-## rstudio
+## rstudio -- The standard CTMR R environment
 
 - Based on `bioconductor/release_base2`
 - Working directory is `/input`
