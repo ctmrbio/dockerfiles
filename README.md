@@ -32,10 +32,9 @@ The following options are often used:
 - Based on `bioconductor/release_base2`
 - Working directory is `/input`
 - Installed packages:
-  - tidyverse meta package
+  - tidyverse (ggplot2, dplyr, tidyr, readr, purrr, tibble, strigr, etc.)
   - beeswarm
   - data.table
-  - dplyr
   - dunn.test
   - ggpubr 
   - PairedData
