@@ -49,7 +49,7 @@ The following options are often used:
 Example command:
 
 ```
-docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/home/rstudio ctmrbio/rstudio
+docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/input ctmrbio/rstudio
 ```
 
 Use this image with SSH port forwarding to access the RStudio interface running
