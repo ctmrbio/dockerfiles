@@ -27,6 +27,33 @@ The following options are often used:
   container. The `<container_path>` doesn't have to exists beforehand. Can be 
   useful to connect e.g. an output directory as `-v /path/to/outdir:/outdir`.
 
+## rstudio
+
+- Based on `bioconductor/release_base2`
+- Working directory is `/input`
+- Installed packages:
+  - tidyverse meta package
+  - beeswarm
+  - data.table
+  - dplyr
+  - dunn.test
+  - ggpubr 
+  - PairedData
+  - pheatmap
+  - plyr
+  - vioplot
+  - rafalib
+  - RColorBrewer
+  - vegan
+
+Example command:
+
+```
+docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/home/rstudio ctmrbio/rstudio
+```
+
+Use this image with SSH port forwarding to access the RStudio interface running
+inside the container. The default hosting port inside the container is `8787`. 
 
 ## rstudio_luisa
 
