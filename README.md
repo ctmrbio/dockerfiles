@@ -26,13 +26,18 @@ The following options are often used:
 - `-v <host_path>:<container_path>`: Mount a path on the host machine into the
   container. The `<container_path>` doesn't have to exists beforehand. Can be 
   useful to connect e.g. an output directory as `-v /path/to/outdir:/outdir`.
+- `-d`: Detach. This is used for images that run/host a service that is
+  acessible without a terminal, e.g. when running an RStudio container that you
+  access via your browser using port forwarding into the container. Remember to
+  `docker kill <container_name>` when you are done working with your container!
+  Otherwise it will keep running in the background (forever).
 
 ## rstudio
 
 - Based on `bioconductor/release_base2`
 - Working directory is `/input`
 - Installed packages:
-  - tidyverse meta package
+  - tidyverse
   - beeswarm
   - data.table
   - dplyr
@@ -54,6 +59,12 @@ docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/home/rstudio c
 
 Use this image with SSH port forwarding to access the RStudio interface running
 inside the container. The default hosting port inside the container is `8787`. 
+
+The tag `ctmrbio/rstudio:latest` will always refer to the most recent
+R/Bioconductor version. Version numbering of this container otherwise works
+like this:
+
+    ctmrbio/rstudio:<image_version>_R<R_version>_Bioc<Bioconductor_version>
 
 ## rstudio_luisa
 
@@ -84,12 +95,15 @@ inside the container. The default hosting port inside the container is `8787`.
   - `gappa`
   - `picrust2` conda environment
 
+Example command:
+
 ```
 docker run --rm -it -u $(id -u):$(id -g) -v $pwd:/mnt ctmrbio/picrust2
 ```
 
-NOTE: The image uses an ENTRYPOINT script that is located in `/picrust2/activate_picrust2_env.sh`
-that automatically activates the `picrust2` conda environment inside the container.
+NOTE: The image uses an ENTRYPOINT script that is located in
+`/picrust2/activate_picrust2_env.sh` that automatically activates the
+`picrust2` conda environment inside the container.
 
 
 ## rstudio_dada2
