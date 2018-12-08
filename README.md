@@ -50,11 +50,20 @@ The following options are often used:
   - RColorBrewer
   - vegan
 
+Note that this image requires that you set a password used to login to RStudio
+inside the container. This is done by setting an environment variable,
+`PASSWORD`, when launching the container: `-e PASSWORD=<your_password>`. The
+password **cannot** be `rstudio`. The image will shut down directly if no
+password is set. The username used to login to RStudio in the container is
+`rstudio`.
+
 Example command:
 
 ```
-docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/input ctmrbio/rstudio
+docker run -d --rm -it -e PASSWORD=ctmrbio -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/input ctmrbio/rstudio
 ```
+
+Replace `ctmrbio` in the above command with a password of your choice. 
 
 Use this image with SSH port forwarding to access the RStudio interface running
 inside the container. The default hosting port inside the container is `8787`. 
