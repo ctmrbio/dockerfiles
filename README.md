@@ -32,15 +32,14 @@ The following options are often used:
   `docker kill <container_name>` when you are done working with your container!
   Otherwise it will keep running in the background (forever).
 
-## rstudio
+## rstudio -- The standard CTMR R environment
 
 - Based on `bioconductor/release_base2`
 - Working directory is `/input`
 - Installed packages:
-  - tidyverse
+  - tidyverse (ggplot2, dplyr, tidyr, readr, purrr, tibble, strigr, etc.)
   - beeswarm
   - data.table
-  - dplyr
   - dunn.test
   - ggpubr 
   - PairedData
@@ -54,7 +53,7 @@ The following options are often used:
 Example command:
 
 ```
-docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/home/rstudio ctmrbio/rstudio
+docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/input ctmrbio/rstudio
 ```
 
 Use this image with SSH port forwarding to access the RStudio interface running
