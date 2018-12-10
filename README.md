@@ -39,6 +39,7 @@ The following options are often used:
 - Installed packages:
   - tidyverse (ggplot2, dplyr, tidyr, readr, purrr, tibble, strigr, etc.)
   - beeswarm
+  - dada2
   - data.table
   - dunn.test
   - ggpubr 
