@@ -1,7 +1,7 @@
 FROM bioconductor/release_base2:R3.5.1_Bioc3.8
 
 LABEL project="Standard CTMR R environment"
-LABEL version="1.1"
+LABEL version="2.0"
 LABEL maintainer="Fredrik Boulund <fredrik.boulund@ki.se>"
 
 # Due to agressive slimming of bioconductor/release_base2:R3.5.1_Bioc3.8, the
@@ -12,9 +12,19 @@ RUN apt-get update \
    && \
    apt-get -y install \
       tcl8.6-dev \
-	  tk8.6-dev
+	  tk8.6-dev \
+	  python3-pandas \
+	  python3-pip \
+	  python3-scipy \
+	  python3-seaborn \
+   && \
+   pip3 install \
+      jupyter \
+	  xlrd \
+	  openpyxl 
 
 RUN install2.r --error \
+   ape \
    beeswarm \
    data.table \
    dplyr \
@@ -32,5 +42,14 @@ RUN install2.r --error \
 RUN install2.r remotes --error \
    && \
    installGithub.r benjjneb/dada2
+
+RUN installGithub.r \
+   IRkernel/repr \
+   IRkernel/IRdisplay \
+   IRkernel/IRkernel \
+   && \
+   R -e 'IRkernel::installspec(user = FALSE)'
+
+COPY start_jupyter /usr/bin
 
 WORKDIR /input

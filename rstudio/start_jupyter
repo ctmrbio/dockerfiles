@@ -1,0 +1,5 @@
+#!/bin/bash
+# Dockerfile script to start serving Jupyter notebook in the current directory
+# Fredrik Boulund 2018
+
+jupyter notebook --port 8888 --ip 0.0.0.0 --allow-root --no-browser

@@ -38,17 +38,26 @@ The following options are often used:
 - Working directory is `/input`
 - Installed packages:
   - tidyverse (ggplot2, dplyr, tidyr, readr, purrr, tibble, strigr, etc.)
+  - ape
   - beeswarm
   - data.table
   - dunn.test
-  - ggpubr 
+  - ggpubr
   - PairedData
   - pheatmap
   - plyr
   - vioplot
   - rafalib
   - RColorBrewer
-  - vegan
+  - vega
+- Jupyter
+- Basic python3 data analysis stack:
+  - scipy
+  - numpy
+  - pandas
+  - xlrd
+  - openpyxl
+
 
 Note that this image requires that you set a password used to login to RStudio
 inside the container. This is done by setting an environment variable,
@@ -60,7 +69,7 @@ password is set. The username used to login to RStudio in the container is
 Example command:
 
 ```
-docker run -d --rm -it -e PASSWORD=ctmrbio -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/input ctmrbio/rstudio
+docker run -d --rm -it -e PASSWORD=ctmrbio -u $(id -u):$(id -g) -p 8787:8787 -v $(pwd):/input ctmrbio/rstudio
 ```
 
 Replace `ctmrbio` in the above command with a password of your choice. 
@@ -73,6 +82,21 @@ R/Bioconductor version. Version numbering of this container otherwise works
 like this:
 
     ctmrbio/rstudio:<image_version>_R<R_version>_Bioc<Bioconductor_version>
+
+
+### Jupyter
+The `rstudio` image also comes with Jupyter installed with kernels for Python 3
+and  R. There is a script installed in the image called `start_jupyter` that
+starts a notebook server in the current directory (the default is `/input`
+inside the container). Note that the jupyter session will not be able to access
+things outside of the directory you mount into `/input` when launching the
+container. Also remember to activate a port forward from a port of your choice
+to the default Jupyter port of `8888` inside the container.
+
+```
+docker run --rm --it -u $(id -u):$(id -g) -p 8888:localhost:8888 -v $(pwd):/input ctmrbio/rstudio start_jupyter
+```
+
 
 ## rstudio_luisa
 
