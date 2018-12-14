@@ -12,11 +12,11 @@ The following options are often used:
 - `--rm`: remove container after it's closed (you pretty much always want this).
 - `-i`: Interactive use, connect your terminal to a terminal in the container.
 - `-t`: Create a pseudo-TTY so you get nice things such as tab completion etc.
-- `-u <username>:<group>`: Set username and group to run as inside the container 
-  (e.g. `-u boulund:ctmrbioinfo`).  Commands often show `-u $(id -u):$(id -g)`, 
-  which will call `id` to automatically get your user and group ID. Note that
-  the group ID might be incorrect if working in a shared folder. For work in our
-  shared folders, set the group ID to `1314` (the group ID for `ctmrbioinfo`).
+- `-u <userid>:<groupid>`: Set user id  and group id to run as inside the
+  container. Commands often show `-u $(id -u):$(id -g)`, which will call `id`
+  to automatically get your user and group id. Note that the group id might be
+  incorrect if working in a shared folder. For work in our shared folders, set
+  the group ID to `1314` (the group id for `ctmrbioinfo`).
 - `-p <host_port>:<container_port>`: Connect a port on the host (e.g. CTMR-NAS) 
   to a port in the container. Often used for connecting to web services inside 
   a container, such as RStudio or Pavian. The `<host_port`> can be exchanged for
@@ -95,7 +95,7 @@ container. Also remember to activate a port forward from a port of your choice
 to the default Jupyter port of `8888` inside the container.
 
 ```
-docker run --rm --it -u $(id -u):$(id -g) -p 8888:localhost:8888 -v $(pwd):/input ctmrbio/rstudio start_jupyter
+docker run --rm --it -u $(id -u):1314 -p 8888:8888 -v $(pwd):/input ctmrbio/rstudio start_jupyter
 ```
 
 
