@@ -1,7 +1,7 @@
 FROM bioconductor/release_base2:R3.5.1_Bioc3.8
 
 LABEL project="Standard CTMR R environment"
-LABEL version="2.0"
+LABEL version="2.1"
 LABEL maintainer="Fredrik Boulund <fredrik.boulund@ki.se>"
 
 # Due to agressive slimming of bioconductor/release_base2:R3.5.1_Bioc3.8, the
@@ -51,5 +51,12 @@ RUN installGithub.r \
    R -e 'IRkernel::installspec(user = FALSE)'
 
 COPY start_jupyter /usr/bin
+
+# Workaround to enable users to run Jupyter notebook with non-existing users.
+# Jupyter tries to resolve a users home dir, so when running Docker with -u and
+# setting a user ID that does not exist inside the container will lead to
+# Jupyter not being able to resolve ~/.local properly, it will resolve ~ as an
+# empty string, and subsequently tries to write to /.local
+RUN mkdir /.local; chmod a+w /.local
 
 WORKDIR /input
