@@ -95,7 +95,7 @@ container. Also remember to activate a port forward from a port of your choice
 to the default Jupyter port of `8888` inside the container.
 
 ```
-docker run --rm --it -u $(id -u):1314 -p 8888:8888 -v $(pwd):/input ctmrbio/rstudio start_jupyter
+docker run --rm -it -u $(id -u):1314 -p 8888:8888 -v $(pwd):/input ctmrbio/rstudio start_jupyter
 ```
 
 
