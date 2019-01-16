@@ -82,7 +82,7 @@ docker run -d --rm -it -e PASSWORD=ctmrbio -e USERID=$(id -u) -e GROUPID=1314 -p
 ```
 
 Replace `ctmrbio` in the above command with a password of your choice. The
-`USERID` is set using `id -u`, which produces your user ID. The `GROUPID`
+`USERID` is set using `id -u`, which replaced by your user ID. The `GROUPID`
 variable can also be replaced with a GID of your choice if you want to run it
 in a folder that is not one of the shared CTMR folders, or on a different system.
 
