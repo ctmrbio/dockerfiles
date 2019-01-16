@@ -114,26 +114,6 @@ when launching the container, otherwise all files and folders created by the
 Jupyter session will be owned by root.
 
 
-## rstudio_luisa
-
-- Based on `bioconductor/release_base2`
-- Working directory is `/home/rstudio`
-- Installed packages:
-  - vegan
-  - RColorBrewer
-  - vioplot
-  - pheatmap
-
-Example command:
-
-```
-docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/home/rstudio ctmrbio/rstudio_luisa
-```
-
-Use this image with SSH port forwarding to access the RStudio interface running
-inside the container. The default hosting port inside the container is `8787`. 
-
-
 ## picrust2
 
 - Based on `ubuntu:18.04`
@@ -154,7 +134,31 @@ NOTE: The image uses an ENTRYPOINT script that is located in
 `picrust2` conda environment inside the container.
 
 
-## rstudio_dada2
+# Deprecated images
+Notes for older Docker images that are currently considered deprecated.
+
+## rstudio_luisa [DEPRECATED]
+
+- Based on `bioconductor/release_base2`
+- Working directory is `/home/rstudio`
+- Installed packages:
+  - vegan
+  - RColorBrewer
+  - vioplot
+  - pheatmap
+
+Example command:
+
+```
+docker run -d --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/home/rstudio ctmrbio/rstudio_luisa
+```
+
+Use this image with SSH port forwarding to access the RStudio interface running
+inside the container. The default hosting port inside the container is `8787`. 
+
+DEPRECATED - replaced by ctmrbio/rstudio.
+
+## rstudio_dada2 [DEPRECATED]
 
 - Based on `bioconductor/release_base2`
 - DADA2 installed from github sources
@@ -168,3 +172,5 @@ docker run --rm -it -u $(id -u):$(id -g) -p 8787:8787 -v $pwd:/home/rstudio ctmr
 
 Use this image with SSH port forwarding to access the RStudio interface running
 inside the container. The default hosting port inside the container is `8787`. 
+
+DEPRECATED - replaced by ctmrbio/rstudio.
