@@ -15,8 +15,10 @@ The following options are often used:
 - `-u <userid>:<groupid>`: Set user id  and group id to run as inside the
   container. Commands often show `-u $(id -u):$(id -g)`, which will call `id`
   to automatically get your user and group id. Note that the group id might be
-  incorrect if working in a shared folder. For work in our shared folders, set
-  the group ID to `1314` (the group id for `ctmrbioinfo`).
+  incorrect if working in a shared folder. For work in our shared CTMR folders,
+  set the group ID to `1314` (the group id for `ctmrbioinfo`). **NOTE:** This
+  is not how to set user and group ID when running RStudio in the
+  ctmrbio/rstudio container! See details below.
 - `-p <host_port>:<container_port>`: Connect a port on the host (e.g. CTMR-NAS) 
   to a port in the container. Often used for connecting to web services inside 
   a container, such as RStudio or Pavian. The `<host_port`> can be exchanged for
@@ -59,9 +61,15 @@ The following options are often used:
   - xlrd
   - openpyxl
 
+The RStudio image is a bit special, as it is built on official Bioconductor
+image that has some unique implementations to simplify the use of RStudio
+inside the container. To specify user and group ID when running RStudio inside
+the container you use `-e USERID=<userid>` and `-e GROUPID=<groupid>` when
+launching the container, instead of the normal `-u <userid>:<groupid>`
+argument.
 
-Note that this image requires that you set a password used to login to RStudio
-inside the container. This is done by setting an environment variable,
+Also note that this image **requires** that you set a password used to login to
+RStudio inside the container. This is done by setting an environment variable,
 `PASSWORD`, when launching the container: `-e PASSWORD=<your_password>`. The
 password **cannot** be `rstudio`. The image will shut down directly if no
 password is set. The username used to login to RStudio in the container is
@@ -70,10 +78,13 @@ password is set. The username used to login to RStudio in the container is
 Example command:
 
 ```
-docker run -d --rm -it -e PASSWORD=ctmrbio -u $(id -u):$(id -g) -p 8787:8787 -v $(pwd):/input ctmrbio/rstudio
+docker run -d --rm -it -e PASSWORD=ctmrbio -e USERID=$(id -u) -e GROUPID=1314 -p 8787:8787 -v $(pwd):/input ctmrbio/rstudio
 ```
 
-Replace `ctmrbio` in the above command with a password of your choice. 
+Replace `ctmrbio` in the above command with a password of your choice. The
+`USERID` is set using `id -u`, which produces your user ID. The `GROUPID`
+variable can also be replaced with a GID of your choice if you want to run it
+in a folder that is not one of the shared CTMR folders, or on a different system.
 
 Use this image with SSH port forwarding to access the RStudio interface running
 inside the container. The default hosting port inside the container is `8787`. 
@@ -89,7 +100,7 @@ like this:
 The `rstudio` image also comes with Jupyter installed with kernels for Python 3
 and  R. There is a script installed in the image called `start_jupyter` that
 starts a notebook server in the current directory (the default is `/input`
-inside the container). Note that the jupyter session will not be able to access
+inside the container). Note that the Jupyter session will not be able to access
 things outside of the directory you mount into `/input` when launching the
 container. Also remember to activate a port forward from a port of your choice
 to the default Jupyter port of `8888` inside the container.
@@ -97,6 +108,10 @@ to the default Jupyter port of `8888` inside the container.
 ```
 docker run --rm -it -u $(id -u):1314 -p 8888:8888 -v $(pwd):/input ctmrbio/rstudio start_jupyter
 ```
+
+Also note that when using Jupyter, you **must** use `-u <userid>:<groupid>`
+when launching the container, otherwise all files and folders created by the
+Jupyter session will be owned by root.
 
 
 ## rstudio_luisa
