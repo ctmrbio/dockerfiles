@@ -1,7 +1,7 @@
 FROM bioconductor/release_base2:R3.5.2_Bioc3.8
 
 LABEL project="Standard CTMR R environment"
-LABEL version="2.2"
+LABEL version="2.3"
 LABEL maintainer="Fredrik Boulund <fredrik.boulund@ki.se>"
 
 RUN apt-get update \
@@ -21,16 +21,15 @@ RUN install2.r --error \
    ape \
    beeswarm \
    data.table \
-   dplyr \
    dunn.test \
    ggpubr \
-   PairedData \
    pheatmap \
-   plyr \
-   vioplot \
    rafalib \
-   RColorBrewer \
-   vegan
+   tidyverse \
+   vegan \
+   vioplot \
+   PairedData \
+   RColorBrewer
 
 # We need to install "remotes" in order to install DADA2 from github sources.
 RUN install2.r remotes --error \

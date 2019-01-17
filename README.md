@@ -48,7 +48,6 @@ The following options are often used:
   - ggpubr
   - PairedData
   - pheatmap
-  - plyr
   - vioplot
   - rafalib
   - RColorBrewer
