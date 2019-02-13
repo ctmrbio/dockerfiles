@@ -1,7 +1,7 @@
 FROM bioconductor/release_base2:R3.5.2_Bioc3.8
 
 LABEL project="Standard CTMR R environment"
-LABEL version="2.3"
+LABEL version="2.4"
 LABEL maintainer="Fredrik Boulund <fredrik.boulund@ki.se>"
 
 RUN apt-get update \
@@ -42,6 +42,12 @@ RUN installGithub.r \
    IRkernel/IRkernel \
    && \
    R -e 'IRkernel::installspec(user = FALSE)'
+
+RUN apt-get update \
+   && \
+   apt-get -y install \
+      default-jre \
+	  default-jdk
 
 COPY start_jupyter /usr/bin
 

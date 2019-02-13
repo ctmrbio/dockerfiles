@@ -59,6 +59,7 @@ The following options are often used:
   - pandas
   - xlrd
   - openpyxl
+- OpenJDK Java8 JRE, JDK
 
 The RStudio image is a bit special, as it is built on official Bioconductor
 image that has some unique implementations to simplify the use of RStudio

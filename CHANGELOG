@@ -1,0 +1,18 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [2.4] - 2019-02-13
+### Added
+- Created CHANGELOG, filled in retroactively for the last versions
+- Added OpenJDK java8 jre and jdk 
+
+## [2.3] - 2019-01-17
+### Added
+- Explicitly install tidyverse
+
+## [2.2] - 2019-01-16
+### Changed
+- Changed base image to bioconductor/release_base2:R3.5.2_Bioc3.8
