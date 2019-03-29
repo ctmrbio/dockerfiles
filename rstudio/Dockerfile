@@ -1,7 +1,7 @@
 FROM bioconductor/release_base2:R3.5.2_Bioc3.8
 
 LABEL project="Standard CTMR R environment"
-LABEL version="2.4"
+LABEL version="2.5"
 LABEL maintainer="Fredrik Boulund <fredrik.boulund@ki.se>"
 
 RUN apt-get update \
@@ -35,6 +35,9 @@ RUN install2.r --error \
 RUN install2.r remotes --error \
    && \
    installGithub.r benjjneb/dada2
+
+RUN installGithub.r \
+   benjjneb/decontam
 
 RUN installGithub.r \
    IRkernel/repr \

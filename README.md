@@ -44,6 +44,7 @@ The following options are often used:
   - beeswarm
   - dada2
   - data.table
+  - decontam
   - dunn.test
   - ggpubr
   - PairedData
